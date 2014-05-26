@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fibonacci</title>
+    <script type="text/javascript">
+    
+
+    function result(number)
+    {
+      seq = [];
+      average = 0.0;
+      //seq[0] = 1;
+      //seq[1] = 1;
+      for (var i = 0; i < number; i++)
+      {
+        if (i == 0 || i == 1) {
+          seq[i] = 1;
+        } 
+        else {
+          seq[i] = seq[i-1] + seq[i-2];  
+        }
+        average += seq[i];
+      }
+      var result = getFibonacci(number);
+      document.getElementById('result').innerHTML = result.seq;
+      document.getElementById('average').innerHTML = result.average;
+
+    }
+    </script>
+  </head>
+  <body>
+    <input type="text" id="number" size="5"/>
+    <input type="button" value="OK" onclick="result(document.getElementById('number').value)" />
+    <div>
+      <output id = "result"> </output>      
+    </div>
+    <div>
+      <output id = "average"></output>
+    </div>
+    </body>
+</html>
