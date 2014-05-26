@@ -4,33 +4,22 @@
     <title>Fibonacci</title>
     <script type="text/javascript" src="fibonacci.js"></script>
     <script type="text/javascript">
-    
-
-    function result(number)
-    {
-      seq = [];
-      average = 0.0;
-      //seq[0] = 1;
-      //seq[1] = 1;
-      for (var i = 0; i < number; i++)
+      function result()
       {
-        if (i == 0 || i == 1) {
-          seq[i] = 1;
-        } 
-        else {
-          seq[i] = seq[i-1] + seq[i-2];  
+        var result = getFibonacci(document.getElementById('number').value, document.getElementById('algorythm').value);
+        if (result){
+          document.getElementById('sequence').innerHTML = result.sequence;
+          document.getElementById('average').innerHTML = result.average;
         }
-        average += seq[i];
+        else{
+          document.getElementById('sequence').innerHTML = "";
+          document.getElementById('average').innerHTML = ""; 
+        }
       }
-      var result = getFibonacci(number);
-      document.getElementById('result').innerHTML = result.seq;
-      document.getElementById('average').innerHTML = result.average;
-
-    }
     </script>
   </head>
   <body>
-      <div>
+    <div>
       <label>Choose the algorythm</label>
       <select id = "algorythm">
         <option value = "cycle">Cycle</option>
@@ -40,13 +29,13 @@
     <div>
       <label>Enter the elements number</label>
       <input type = "text" id = "number" size = "5"/>
-      <input type = "button" value = "OK" onclick = "result(document.getElementById('number').value)" />
+      <input type = "button" value = "OK" onclick = "result()" />
     </div>  
     <div>
-      <output id = "result"> </output>      
+      <output id = "sequence"></output>      
     </div>
     <div>
       <output id = "average"></output>
     </div>
-    </body>
+  </body>
 </html>
