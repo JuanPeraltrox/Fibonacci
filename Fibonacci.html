@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Fibonacci</title>
+    <script type="text/javascript" src="fibonacci.js"></script>
     <script type="text/javascript">
     
 
@@ -29,8 +30,18 @@
     </script>
   </head>
   <body>
-    <input type="text" id="number" size="5"/>
-    <input type="button" value="OK" onclick="result(document.getElementById('number').value)" />
+      <div>
+      <label>Choose the algorythm</label>
+      <select id = "algorythm">
+        <option value = "cycle">Cycle</option>
+        <option value = "recursion">Recursion</option>
+      </select>
+    </div>
+    <div>
+      <label>Enter the elements number</label>
+      <input type = "text" id = "number" size = "5"/>
+      <input type = "button" value = "OK" onclick = "result(document.getElementById('number').value)" />
+    </div>  
     <div>
       <output id = "result"> </output>      
     </div>
