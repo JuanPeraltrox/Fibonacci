@@ -19,10 +19,12 @@
         var result = getFibonacci($('#number').val(), $('#algorythm').val());
         if (result)
         {
-            $("#sequence").html(result.sequence);
+            $('#numberInput').removeClass('has-error');
+            $("#sequence").html(result.sequence.join(", "));
             $('#average').html(result.average);
         }
         else {
+            $('#numberInput').addClass('has-error');
             $("#sequence").html('');
             $('#average').html('');
         }
@@ -40,6 +42,7 @@
        <div class="row"> 
         <h1>Fibonacci example</h1>
         <form role="form">
+            <h2>Settings</h2>
             <div class="form-group">
                 <label for="algorythm" class="control-label">Choose the algorythm</label>
                 <select id="algorythm" class="form-control">
@@ -47,7 +50,7 @@
                     <option value="recursion">Recursion</option>
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group" id="numberInput">
                 <label for="number" class="control-label">Enter the sequence length</label>
                 <input type="number" id = "number" class="form-control"/>
             </div>
@@ -57,6 +60,7 @@
     </div>     
     <div class="container">
       <div class="row">
+          <h2>Output</h2>
           <p id="sequence"></p>      
           <p id="average"></p>
       </div>

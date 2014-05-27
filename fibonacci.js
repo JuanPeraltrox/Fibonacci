@@ -6,13 +6,12 @@ function getFibonacci(number, algorythm)
 
   if (!isInteger(number) || (number<1 || number>99))
   {
-    alert("Not in range or not integer!");
     return;
   }
   switch (algorythm) {
-    case "cycle": {return getFibCycle(number); break;}
-    case "recursion": {return getFibRecursive(number); break;}
-    default: {alert("Not implemented");}
+      case "cycle": {return getFibCycle(number); break;}
+      case "recursion": {return getFibRecursive(number); break;}
+      default: { return;}
   }
 }
 
