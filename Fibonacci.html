@@ -22,8 +22,10 @@
             $('#numberInput').removeClass('has-error');
             $("#sequence").html(result.sequence.join(", "));
             $('#average').html(result.average);
+            $('#output').show();
         }
         else {
+            $('#output').hide();
             $('#numberInput').addClass('has-error');
             $("#sequence").html('');
             $('#average').html('');
@@ -59,9 +61,11 @@
       </div>
     </div>     
     <div class="container">
-      <div class="row">
+      <div class="row" id="output">
           <h2>Output</h2>
-          <p id="sequence"></p>      
+          <h3>Fibonacci sequence</h3>
+          <p id="sequence"></p>
+          <h3>Average</h3>      
           <p id="average"></p>
       </div>
     </div>
