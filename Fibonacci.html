@@ -1,41 +1,71 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
     <title>Fibonacci</title>
     <script type="text/javascript" src="fibonacci.js"></script>
     <script type="text/javascript">
       function result()
       {
-        var result = getFibonacci(document.getElementById('number').value, document.getElementById('algorythm').value);
-        if (result){
-          document.getElementById('sequence').innerHTML = result.sequence;
-          document.getElementById('average').innerHTML = result.average;
+        var result = getFibonacci($('#number').val(), $('#algorythm').val());
+        if (result)
+        {
+            $('#numberInput').removeClass('has-error');
+            $("#sequence").html(result.sequence.join(", "));
+            $('#average').html(result.average);
         }
-        else{
-          document.getElementById('sequence').innerHTML = "";
-          document.getElementById('average').innerHTML = ""; 
+        else {
+            $('#numberInput').addClass('has-error');
+            $("#sequence").html('');
+            $('#average').html('');
         }
       }
     </script>
+<!--Wrapped .form-group style according to official docs    -->
+    <style type="text/css">
+        .form-group {
+            width: 30%;
+        }
+    </style>
   </head>
   <body>
-    <div>
-      <label>Choose the algorythm</label>
-      <select id = "algorythm">
-        <option value = "cycle">Cycle</option>
-        <option value = "recursion">Recursion</option>
-      </select>
+    <div class="container">
+       <div class="row"> 
+        <h1>Fibonacci example</h1>
+        <form role="form">
+            <h2>Settings</h2>
+            <div class="form-group">
+                <label for="algorythm" class="control-label">Choose the algorythm</label>
+                <select id="algorythm" class="form-control">
+                    <option value="cycle">Cycle</option>
+                    <option value="recursion">Recursion</option>
+                </select>
+            </div>
+            <div class="form-group" id="numberInput">
+                <label for="number" class="control-label">Enter the sequence length</label>
+                <input type="number" id = "number" class="form-control"/>
+            </div>
+            <button type="submit" class="btn btn-primary" onclick = "result(); return false;">OK</button>
+        </form>
+      </div>
+    </div>     
+    <div class="container">
+      <div class="row">
+          <h2>Output</h2>
+          <p id="sequence"></p>      
+          <p id="average"></p>
+      </div>
     </div>
-    <div>
-      <label>Enter the elements number</label>
-      <input type = "text" id = "number" size = "5"/>
-      <input type = "button" value = "OK" onclick = "result()" />
-    </div>  
-    <div>
-      <output id = "sequence"></output>      
-    </div>
-    <div>
-      <output id = "average"></output>
-    </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>
