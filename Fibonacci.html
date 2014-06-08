@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-     <!--[if lt IE 9]>
+    <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -15,53 +15,70 @@
     <script type="text/javascript">
       function result()
       {
-
         var result = getFibonacci($('#number').val(), $('#algorythm').val());
         if (result)
         {
-            $('#numberInput').removeClass('has-error');
             $("#sequence").html(result.sequence.join(", "));
             $('#average').html(result.average);
             $('#output').show();
         }
         else {
             $('#output').hide();
-            $('#numberInput').addClass('has-error');
             $("#sequence").html('');
             $('#average').html('');
         }
       }
-    </script>
-<!--Wrapped .form-group style according to official docs    -->
-    <style type="text/css">
-        .form-group {
-            width: 30%;
+      function validate()
+      {
+        var result = isValid($('#number').val());
+        if (result)
+        {
+          $('#numberInput').removeClass('has-error');
+          $('#btnOk').removeClass('disabled');
         }
+        else
+        {
+          $('#numberInput').addClass('has-error');
+          $('#btnOk').addClass('disabled');
+          $('#output').hide();
+          $("#sequence").html('');
+          $('#average').html('');
+        }
+      }
+    </script>
+    <style type="text/css">
+      .form-group{width: 30%;}
     </style>
   </head>
   <body>
     <div class="container">
-       <div class="row"> 
+       <div> 
         <h1>Fibonacci example</h1>
-        <form role="form">
+        <form class="form-horizontal" role="form">
             <h2>Settings</h2>
             <div class="form-group">
-                <label for="algorythm" class="control-label">Choose the algorythm</label>
-                <select id="algorythm" class="form-control">
-                    <option value="cycle">Cycle</option>
-                    <option value="recursion">Recursion</option>
-                </select>
+              <label for="algorythm" class="col-sm-7 control-label">Choose the algorythm</label>
+                <div class="col-sm-5">
+                  <select id="algorythm" class="form-control">
+                      <option value="cycle">Cycle</option>
+                      <option value="recursion">Recursion</option>
+                  </select>
+                </div>
             </div>
             <div class="form-group" id="numberInput">
-                <label for="number" class="control-label">Enter the sequence length</label>
-                <input type="number" id = "number" oninput="result();" class="form-control"/>
+                <label for="number" class="col-sm-7 control-label">Enter the sequence length</label>
+                <div class="col-sm-5">
+                  <input type="number" id = "number" class="form-control" oninput="validate();"/>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary" onclick = "result(); return false;">OK</button>
+            <div class="form-group">
+              <div class="col-sm-offset-7 col-sm-5">
+                <button id="btnOk" type="submit" onclick = "result(); return false;" class="btn btn-default">OK</button>
+              </div>
+            </div>
         </form>
       </div>
-    </div>     
-    <div class="container">
-      <div class="row" id="output">
+      <div id="output">
           <h2>Output</h2>
           <h3>Fibonacci sequence</h3>
           <p id="sequence"></p>
@@ -69,7 +86,7 @@
           <p id="average"></p>
       </div>
     </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>

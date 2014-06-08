@@ -1,5 +1,6 @@
 function getFibonacci(number, algorythm)
 {
+  /*
   var isInteger = function (n){
     return (n === ""+parseInt(n));
   };
@@ -7,7 +8,7 @@ function getFibonacci(number, algorythm)
   if (!isInteger(number) || (number<1 || number>99))
   {
     return;
-  }
+  } */
   switch (algorythm) {
       case "cycle": {return getFibCycle(number); break;}
       case "recursion": {return getFibRecursive(number); break;}
@@ -49,4 +50,17 @@ function getFibRecursive(number)
   fibFunc(number, 1, 1);
   aver = aver / number;    
   return {sequence: seq, average: aver};
+}
+
+function isValid(number)
+{
+  var isInteger = function (n){
+    return (n === ""+parseInt(n));
+  };
+
+  if (!isInteger(number) || (number<1 || number>99))
+  {
+    return false;
+  }
+  return true;
 }
